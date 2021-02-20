@@ -1,15 +1,34 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Phonebook.Common.Interfaces;
+using Phonebook.Common.ViewModel;
+using PhoneBook.DAL.Context;
+using PhoneBook.DAL.DataAccess;
+using PhoneBook.Services;
+using PhoneBook.Services.Mapper;
+using PhoneBook.Services.Validators;
 
 namespace PhoneBookApp
 {
     public class Startup
     {
+        private static bool MyIsOriginAllowed(string origin)
+        {
+            var isAllowed = true;
+
+            // Your logic.
+
+            return isAllowed;
+        }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -20,8 +39,32 @@ namespace PhoneBookApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //cors policy
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .SetIsOriginAllowed(MyIsOriginAllowed)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
 
-            services.AddControllersWithViews();
+            //add sql server db
+            var sqlConnectionStr = Configuration["connectionStrings:PhoneBookContext"];
+            services.AddDbContext<PhoneBookContext>(x => x.UseSqlServer(sqlConnectionStr));
+
+            //add data access layer
+            services.AddScoped<IPhoneBookDAL, PhoneBookDAL>();
+
+            //add services
+            services.AddScoped<IPhoneBookService, PhoneBookService>();
+
+            services.AddAutoMapper(c => c.AddProfile<PhoneEntryProfile>(), typeof(Startup));
+
+            services.AddControllersWithViews().AddFluentValidation(); ;
+
+            services.AddTransient<IValidator<PhoneEntryViewModel>, PhoneEntryValidator>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

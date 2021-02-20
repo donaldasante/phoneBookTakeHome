@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBookApp", "PhoneBookApp\PhoneBookApp.csproj", "{07761719-AFE6-4F71-8B43-581BA2DAF1DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonebook.Common", "Phonebook.Common\Phonebook.Common.csproj", "{821D4D52-FDA1-496E-8D16-354D9CEE7457}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.DAL", "PhoneBook.DAL\PhoneBook.DAL.csproj", "{99E2456A-8C29-416D-9B74-125A6D0B389C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Services", "PhoneBook.Services\PhoneBook.Services.csproj", "{5FFCA1E4-FC1B-4432-802C-C507D3D5D327}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{07761719-AFE6-4F71-8B43-581BA2DAF1DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07761719-AFE6-4F71-8B43-581BA2DAF1DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07761719-AFE6-4F71-8B43-581BA2DAF1DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{821D4D52-FDA1-496E-8D16-354D9CEE7457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{821D4D52-FDA1-496E-8D16-354D9CEE7457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{821D4D52-FDA1-496E-8D16-354D9CEE7457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{821D4D52-FDA1-496E-8D16-354D9CEE7457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99E2456A-8C29-416D-9B74-125A6D0B389C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99E2456A-8C29-416D-9B74-125A6D0B389C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99E2456A-8C29-416D-9B74-125A6D0B389C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E2456A-8C29-416D-9B74-125A6D0B389C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FFCA1E4-FC1B-4432-802C-C507D3D5D327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FFCA1E4-FC1B-4432-802C-C507D3D5D327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FFCA1E4-FC1B-4432-802C-C507D3D5D327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FFCA1E4-FC1B-4432-802C-C507D3D5D327}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
